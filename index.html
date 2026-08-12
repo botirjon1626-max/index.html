@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BMAX CLAUDE COMPANY | Online Tools</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+    color:#fff;
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(circle at 10% 10%,#0066ff55,transparent 25%),
+        radial-gradient(circle at 90% 15%,#9b00ff55,transparent 25%),
+        radial-gradient(circle at 50% 90%,#00e5ff44,transparent 30%),
+        #030712;
+}
+
+/* ANIMATED BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:-50%;
+    z-index:-2;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 40%,
+            #2563eb18,
+            transparent 60%
+        );
+
+    animation:bgMove 12s linear infinite;
+}
+
+@keyframes bgMove{
+    0%{transform:translateX(-20%) rotate(0deg)}
+    50%{transform:translateX(20%) rotate(180deg)}
+    100%{transform:translateX(-20%) rotate(360deg)}
+}
+
+/* PARTICLES */
+
+.particle{
+    position:fixed;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:#60a5fa;
+    box-shadow:0 0 15px #60a5fa;
+    opacity:.7;
+    animation:float 8s infinite ease-in-out;
+    z-index:-1;
+}
+
+.p1{left:8%;top:20%}
+.p2{left:25%;top:70%;animation-delay:2s}
+.p3{left:50%;top:30%;animation-delay:4s}
+.p4{left:75%;top:65%;animation-delay:1s}
+.p5{left:90%;top:25%;animation-delay:3s}
+.p6{left:60%;top:85%;animation-delay:5s}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0) scale(1);
+    }
+    50%{
+        transform:translateY(-70px) scale(1.8);
+    }
+}
+
+/* HEADER */
+
+header{
+    text-align:center;
+    padding:70px 20px 35px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:10px 20px;
+
+    border:1px solid #60a5fa66;
+    border-radius:50px;
+
+    background:#ffffff0a;
+
+    backdrop-filter:blur(15px);
+
+    color:#93c5fd;
+
+    font-size:12px;
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+    box-shadow:
+        0 0 30px #2563eb22;
+
+    animation:pulse 3s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        box-shadow:0 0 20px #2563eb22;
+    }
+    50%{
+        box-shadow:0 0 40px #8b5cf655;
+    }
+}
+
+.logo{
+    font-size:clamp(45px,10vw,85px);
+
+    margin-top:22px;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #818cf8,
+            #c084fc,
+            #22d3ee
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    background-size:300%;
+
+    animation:gradient 5s ease infinite;
+}
+
+@keyframes gradient{
+    0%{background-position:0%}
+    50%{background-position:100%}
+    100%{background-position:0%}
+}
+
+.subtitle{
+    margin-top:15px;
+
+    color:#94a3b8;
+
+    font-size:18px;
+}
+
+.status{
+    margin-top:18px;
+
+    color:#86efac;
+
+    font-size:14px;
+}
+
+.status span{
+    display:inline-block;
+
+    width:8px;
+    height:8px;
+
+    background:#22c55e;
+
+    border-radius:50%;
+
+    box-shadow:0 0 15px #22c55e;
+
+    margin-right:7px;
+}
+
+/* SEARCH */
+
+.search-container{
+    max-width:700px;
+
+    margin:20px auto 45px;
+
+    padding:0 20px;
+}
+
+.search{
+    width:100%;
+
+    padding:18px 24px;
+
+    border-radius:60px;
+
+    border:1px solid #ffffff20;
+
+    background:#ffffff0b;
+
+    backdrop-filter:blur(20px);
+
+    color:white;
+
+    outline:none;
+
+    font-size:16px;
+
+    box-shadow:
+        0 15px 50px #00000035;
+
+    transition:.3s;
+}
+
+.search:focus{
+    border-color:#60a5fa;
+
+    box-shadow:
+        0 0 30px #3b82f655;
+}
+
+/* TOOL GRID */
+
+.tools{
+    width:min(1200px,94%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(270px,1fr));
+
+    gap:25px;
+}
+
+/* CARD */
+
+.card{
+    position:relative;
+
+    padding:27px;
+
+    border-radius:28px;
+
+    border:1px solid #ffffff15;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff12,
+            #ffffff04
+        );
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 20px 60px #00000040;
+
+    overflow:hidden;
+
+    transition:.35s;
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    right:-70px;
+    top:-70px;
+
+    border-radius:50%;
+
+    background:#3b82f633;
+
+    filter:blur(20px);
+
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+
+    border-color:#60a5fa66;
+
+    box-shadow:
+        0 25px 70px #00000070,
+        0 0 35px #3b82f633;
+}
+
+.card:hover::before{
+    transform:scale(1.5);
+}
+
+.icon{
+    font-size:48px;
+
+    filter:
+        drop-shadow(
+            0 0 15px #60a5fa88
+        );
+}
+
+.card h2{
+    margin-top:15px;
+
+    font-size:23px;
+}
+
+.card p{
+    color:#94a3b8;
+
+    line-height:1.5;
+
+    margin:10px 0 18px;
+
+    min-height:45px;
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:15px;
+
+    color:white;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 8px 25px #2563eb33;
+
+    transition:.2s;
+}
+
+button:hover{
+    transform:scale(1.03);
+
+    box-shadow:
+        0 0 25px #6366f688;
+}
+
+button:active{
+    transform:scale(.97);
+}
+
+/* TOOL AREA */
+
+.tool{
+    display:none;
+
+    margin-top:18px;
+
+    animation:showTool .3s ease;
+}
+
+@keyframes showTool{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+input,
+textarea,
+select{
+    width:100%;
+
+    padding:13px;
+
+    margin:6px 0 10px;
+
+    border-radius:13px;
+
+    border:1px solid #ffffff20;
+
+    background:#020617cc;
+
+    color:white;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+textarea{
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#60a5fa;
+
+    box-shadow:
+        0 0 15px #3b82f633;
+}
+
+.result{
+    margin-top:12px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:#020617aa;
+
+    border:1px solid #ffffff10;
+
+    color:#93c5fd;
+
+    text-align:center;
+
+    word-break:break-word;
+}
+
+.result img{
+    max-width:220px;
+
+    border-radius:15px;
+
+    margin-top:8px;
+}
+
+/* COLOR */
+
+.color-box{
+    height:70px;
+
+    border-radius:15px;
+
+    margin-top:10px;
+
+    border:1px solid #ffffff30;
+}
+
+/* TIMER */
+
+.timer{
+    font-size:42px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    padding:10px;
+
+    color:#67e8f9;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    padding:70px 20px 30px;
+
+    color:#64748b;
+}
+
+.footer-title{
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#93c5fd;
+}
+
+footer strong{
+    color:#c084fc;
+}
+
+/* TOP */
+
+.top{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    width:52px;
+    height:52px;
+
+    border-radius:50%;
+
+    z-index:20;
+
+    font-size:20px;
+
+    box-shadow:
+        0 0 25px #6366f655;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    header{
+        padding-top:45px;
+    }
+
+    .logo{
+        font-size:43px;
+    }
+
+    .subtitle{
+        font-size:15px;
+    }
+
+    .tools{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PARTICLES -->
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="particle p6"></div>
+
+
+<header>
+
+    <div class="badge">
+        ⚡ BMAX CLAUDE COMPANY
+    </div>
+
+    <div class="logo">
+        ONLINE TOOLS
+    </div>
+
+    <div class="subtitle">
+        🚀 Powerful tools. Simple experience.
+    </div>
+
+    <div class="status">
+        <span></span>
+        All systems operational
+    </div>
+
+</header>
+
+
+<div class="search-container">
+
+    <input
+        class="search"
+        id="search"
+        placeholder="🔎 Tool qidirish..."
+        oninput="searchTools()">
+
+</div>
+
+
+<main class="tools">
+
+
+<!-- QR -->
+
+<div class="card">
+
+    <div class="icon">🔳</div>
+
+    <h2>QR Generator</h2>
+
+    <p>
+        Matn yoki havoladan chiroyli QR Code yarating.
+    </p>
+
+    <button onclick="openTool('qr')">
+        🚀 Ochish
+    </button>
+
+    <div id="qr" class="tool">
+
+        <input
+            id="qrText"
+            placeholder="https://example.com">
+
+        <button onclick="makeQR()">
+            ✨ QR Yaratish
+        </button>
+
+        <div
+            id="qrResult"
+            class="result">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PASSWORD -->
+
+<div class="card">
+
+    <div class="icon">🔐</div>
+
+    <h2>Password Generator</h2>
+
+    <p>
+        Kuchli tasodifiy parol yarating.
+    </p>
+
+    <button onclick="openTool('password')">
+        🔥 Ochish
+    </button>
+
+    <div id="password" class="tool">
+
+        <button onclick="makePassword()">
+            🔑 Parol yaratish
+        </button>
+
+        <div
+            id="passwordResult"
+            class="result">
+        </div>
+
+        <button
+            onclick="copyResult('passwordResult')"
+            style="margin-top:8px">
+            📋 Copy
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- CALCULATOR -->
+
+<div class="card">
+
+    <div class="icon">🧮</div>
+
+    <h2>Calculator</h2>
+
+    <p>
+        Tez va aniq matematik hisob-kitob.
+    </p>
+
+    <button onclick="openTool('calculator')">
+        ⚡ Ochish
+    </button>
+
+    <div id="calculator" class="tool">
+
+        <input
+            id="calc"
+            placeholder="25 + 10 * 2">
+
+        <button onclick="calculate()">
+            🧮 Hisoblash
+        </button>
+
+        <div
+            id="calcResult"
+            class="result">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TEXT COUNTER -->
+
+<div class="card">
+
+    <div class="icon">📝</div>
+
+    <h2>Text Counter</h2>
+
+    <p>
+        So‘zlar, belgilar va qatorlarni hisoblang.
+    </p>
+
+    <button onclick="openTool('counter')">
+        📊 Ochish
+    </button>
+
+    <div id="counter" class="tool">
+
+        <textarea
+            id="counterText"
+            rows="5"
+            placeholder="Matningizni yozing..."
+            oninput="countText()"></textarea>
+
+        <div
+            id="counterResult"
+            class="result">
+            So‘z: 0 | Belgilar: 0 | Qatorlar: 0
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TEXT CONVERTER -->
+
+<div class="card">
+
+    <div class="icon">🔠</div>
+
+    <h2>Text Converter</h2>
+
+    <p>
+        Matnni katta yoki kichik harflarga aylantiring.
+    </p>
+
+    <button onclick="openTool('converter')">
+        ✨ Ochish
+    </button>
+
+    <div id="converter" class="tool">
+
+        <textarea
+            id="converterText"
+            rows="4"
+            placeholder="Matn yozing..."></textarea>
+
+        <button onclick="upper()">
+            🔠 KATTA HARF
+        </button>
+
+        <br><br>
+
+        <button onclick="lower()">
+            🔡 kichik harf
+        </button>
+
+        <div
+            id="converterResult"
+            class="result">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- COLOR -->
+
+<div class="card">
+
+    <div class="icon">🎨</div>
+
+    <h2>Color Picker</h2>
+
+    <p>
+        Istalgan rangni tanlang va HEX kodini oling.
+    </p>
+
+    <button onclick="openTool('color')">
+        🌈 Ochish
+    </button>
+
+    <div id="color" class="tool">
+
+        <input
+            type="color"
+            id="colorPicker"
+            value="#3b82f6"
+            onchange="showColor()">
+
+        <div
+            id="colorBox"
+            class="color-box">
+        </div>
+
+        <div
+            id="colorResult"
+            class="result">
+            #3b82f6
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- RANDOM -->
+
+<div class="card">
+
+    <div class="icon">🎲</div>
+
+    <h2>Random Number</h2>
+
+    <p>
+        Berilgan oraliqdan tasodifiy raqam oling.
+    </p>
+
+    <button onclick="openTool('random')">
+        🎲 Ochish
+    </button>
+
+    <div id="random" class="tool">
+
+        <input
+            type="number"
+            id="min"
+            placeholder="Minimum">
+
+        <input
+            type="number"
+            id="max"
+            placeholder="Maximum">
+
+        <button onclick="randomNumber()">
+            🎯 Raqam yaratish
+        </button>
+
+        <div
+            id="randomResult"
+            class="result">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TIMER -->
+
+<div class="card">
+
+    <div class="icon">⏱️</div>
+
+    <h2>Timer</h2>
+
+    <p>
+        Oddiy countdown timer.
+    </p>
+
+    <button onclick="openTool('timer')">
+        ⏱️ Ochish
+    </button>
+
+    <div id="timer" class="tool">
+
+        <input
+            type="number"
+            id="timerInput"
+            placeholder="Sekund">
+
+        <div
+            id="timerDisplay"
+            class="timer">
+            00:00
+        </div>
+
+        <button onclick="startTimer()">
+            ▶️ Boshlash
+        </button>
+
+        <br><br>
+
+        <button onclick="resetTimer()">
+            🔄 Reset
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- AGE -->
+
+<div class="card">
+
+    <div class="icon">🎂</div>
+
+    <h2>Age Calculator</h2>
+
+    <p>
+        Tug‘ilgan sanadan yoshingizni hisoblang.
+    </p>
+
+    <button onclick="openTool('age')">
+        🎂 Ochish
+    </button>
+
+    <div id="age" class="tool">
+
+        <input
+            type="date"
+            id="birthDate">
+
+        <button onclick="calculateAge()">
+            🚀 Hisoblash
+        </button>
+
+        <div
+            id="ageResult"
+            class="result">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- URL -->
+
+<div class="card">
+
+    <div class="icon">🔗</div>
+
+    <h2>URL Encoder</h2>
+
+    <p>
+        URL matnini encode yoki decode qiling.
+    </p>
+
+    <button onclick="openTool('urltool')">
+        🔗 Ochish
+    </button>
+
+    <div id="urltool" class="tool">
+
+        <textarea
+            id="urlText"
+            rows="4"
+            placeholder="URL yoki matn..."></textarea>
+
+        <button onclick="encodeURL()">
+            🔐 Encode
+        </button>
+
+        <br><br>
+
+        <button onclick="decodeURL()">
+            🔓 Decode
+        </button>
+
+        <div
+            id="urlResult"
+            class="result">
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-title">
+        ⚡ BMAX CLAUDE COMPANY
+    </div>
+
+    <p style="margin-top:10px">
+        🚀 Online Tools Platform
+    </p>
+
+    <p style="margin-top:15px">
+        © 2026 — Made with ❤️ by
+        <strong>BMAX</strong>
+    </p>
+
+</footer>
+
+
+<button
+    class="top"
+    onclick="window.scrollTo(0,0)">
+    ↑
+</button>
+
+
+<script>
+
+/* OPEN TOOL */
+
+function openTool(id){
+
+    const tool =
+        document.getElementById(id);
+
+    tool.style.display =
+        tool.style.display === "block"
+        ? "none"
+        : "block";
+}
+
+
+/* SEARCH */
+
+function searchTools(){
+
+    const value =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    document
+    .querySelectorAll(".card")
+    .forEach(card => {
+
+        const text =
+            card.innerText.toLowerCase();
+
+        card.style.display =
+            text.includes(value)
+            ? ""
+            : "none";
+
+    });
+}
+
+
+/* QR */
+
+function makeQR(){
+
+    const text =
+        document
+        .getElementById("qrText")
+        .value
+        .trim();
+
+    const result =
+        document.getElementById("qrResult");
+
+    if(!text){
+
+        result.innerText =
+            "⚠️ Link yoki matn kiriting!";
+
+        return;
+    }
+
+    const url =
+        "https://api.qrserver.com/v1/create-qr-code/" +
+        "?size=250x250&data=" +
+        encodeURIComponent(text);
+
+    result.innerHTML =
+        "<p>✨ QR Code tayyor!</p>" +
+        '<img src="' +
+        url +
+        '" alt="QR Code">';
+
+}
+
+
+/* PASSWORD */
+
+function makePassword(){
+
+    const chars =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+        "abcdefghijklmnopqrstuvwxyz" +
+        "0123456789!@#$%^&*()_+-=";
+
+    let password = "";
+
+    for(let i=0;i<18;i++){
+
+        password +=
+            chars[
+                Math.floor(
+                    Math.random()*chars.length
+                )
+            ];
+
+    }
+
+    document
+    .getElementById("passwordResult")
+    .innerText =
+        password;
+}
+
+
+/* COPY */
+
+function copyResult(id){
+
+    const text =
+        document
+        .getElementById(id)
+        .innerText;
+
+    navigator.clipboard
+    .writeText(text)
+    .then(() => {
+
+        alert("✅ Nusxalandi!");
+
+    });
+}
+
+
+/* CALCULATOR */
+
+function calculate(){
+
+    const expression =
+        document
+        .getElementById("calc")
+        .value
+        .trim();
+
+    const result =
+        document
+        .getElementById("calcResult");
+
+    if(
+        !/^[0-9+\-*/().%\s]+$/
+        .test(expression)
+    ){
+
+        result.innerText =
+            "⚠️ Faqat matematik belgilar!";
+
+        return;
+    }
+
+    try{
+
+        const answer =
+            Function(
+                '"use strict";return(' +
+                expression +
+                ')'
+            )();
+
+        result.innerText =
+            "✅ Natija: " + answer;
+
+    }catch{
+
+        result.innerText =
+            "❌ Hisoblashda xatolik!";
+    }
+}
+
+
+/* COUNTER */
+
+function countText(){
+
+    const text =
+        document
+        .getElementById("counterText")
+        .value;
+
+    const words =
+        text.trim()
+        ? text.trim().split(/\s+/).length
+        : 0;
+
+    const chars =
+        text.length;
+
+    const lines =
+        text
+        ? text.split("\n").length
+        : 0;
+
+    document
+    .getElementById("counterResult")
+    .innerText =
+        "📝 So‘z: " +
+        words +
+        " | Belgilar: " +
+        chars +
+        " | Qatorlar: " +
+        lines;
+}
+
+
+/* UPPER */
+
+function upper(){
+
+    const text =
+        document
+        .getElementById("converterText")
+        .value;
+
+    document
+    .getElementById("converterResult")
+    .innerText =
+        text.toUpperCase();
+}
+
+
+/* LOWER */
+
+function lower(){
+
+    const text =
+        document
+        .getElementById("converterText")
+        .value;
+
+    document
+    .getElementById("converterResult")
+    .innerText =
+        text.toLowerCase();
+}
+
+
+/* COLOR */
+
+function showColor(){
+
+    const color =
+        document
+        .getElementById("colorPicker")
+        .value;
+
+    document
+    .getElementById("colorBox")
+    .style.background =
+        color;
+
+    document
+    .getElementById("colorResult")
+    .innerText =
+        color;
+}
+
+
+/* RANDOM */
+
+function randomNumber(){
+
+    let min =
+        Number(
+            document
+            .getElementById("min")
+            .value
+        );
+
+    let max =
+        Number(
+            document
+            .getElementById("max")
+            .value
+        );
+
+    const result =
+        document
+        .getElementById("randomResult");
+
+    if(
+        !Number.isFinite(min) ||
+        !Number.isFinite(max) ||
+        min > max
+    ){
+
+        result.innerText =
+            "⚠️ To‘g‘ri oraliq kiriting!";
+
+        return;
+    }
+
+    const number =
+        Math.floor(
+            Math.random() *
+            (max-min+1)
+        ) + min;
+
+    result.innerText =
+        "🎯 Natija: " + number;
+}
+
+
+/* TIMER */
+
+let timerInterval = null;
+let timerSeconds = 0;
+
+function startTimer(){
+
+    if(timerInterval) return;
+
+    const input =
+        Number(
+            document
+            .getElementById("timerInput")
+            .value
+        );
+
+    if(
+        !Number.isFinite(input) ||
+        input <= 0
+    ){
+
+        alert("⚠️ Sekund kiriting!");
+
+        return;
+    }
+
+    timerSeconds = input;
+
+    updateTimer();
+
+    timerInterval =
+        setInterval(() => {
+
+            timerSeconds--;
+
+            updateTimer();
+
+            if(timerSeconds <= 0){
+
+                clearInterval(timerInterval);
+
+                timerInterval = null;
+
+                alert("⏰ Vaqt tugadi!");
+
+            }
+
+        },1000);
+}
+
+
+function updateTimer(){
+
+    const minutes =
+        Math.floor(
+            timerSeconds/60
+        );
+
+    const seconds =
+        timerSeconds%60;
+
+    document
+    .getElementById("timerDisplay")
+    .innerText =
+        String(minutes).padStart(2,"0")
+        + ":" +
+        String(seconds).padStart(2,"0");
+}
+
+
+function resetTimer(){
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    timerSeconds = 0;
+
+    document
+    .getElementById("timerDisplay")
+    .innerText =
+        "00:00";
+}
+
+
+/* AGE */
+
+function calculateAge(){
+
+    const input =
+        document
+        .getElementById("birthDate")
+        .value;
+
+    const result =
+        document
+        .getElementById("ageResult");
+
+    if(!input){
+
+        result.innerText =
+            "⚠️ Tug‘ilgan sanani tanlang!";
+
+        return;
+    }
+
+    const birth =
+        new Date(input);
+
+    const today =
+        new Date();
+
+    let age =
+        today.getFullYear()
+        - birth.getFullYear();
+
+    const month =
+        today.getMonth()
+        - birth.getMonth();
+
+    if(
+        month < 0 ||
+        (
+            month === 0 &&
+            today.getDate() < birth.getDate()
+        )
+    ){
+
+        age--;
+    }
+
+    if(age < 0){
+
+        result.innerText =
+            "⚠️ Sana noto‘g‘ri!";
+
+        return;
+    }
+
+    result.innerText =
+        "🎉 Sizning yoshingiz: " +
+        age +
+        " yosh";
+}
+
+
+/* URL ENCODE */
+
+function encodeURL(){
+
+    const text =
+        document
+        .getElementById("urlText")
+        .value;
+
+    document
+    .getElementById("urlResult")
+    .innerText =
+        encodeURIComponent(text);
+}
+
+
+/* URL DECODE */
+
+function decodeURL(){
+
+    const text =
+        document
+        .getElementById("urlText")
+        .value;
+
+    try{
+
+        document
+        .getElementById("urlResult")
+        .innerText =
+            decodeURIComponent(text);
+
+    }catch{
+
+        document
+        .getElementById("urlResult")
+        .innerText =
+            "❌ URL noto‘g‘ri!";
+    }
+}
+
+
+/* INITIAL COLOR */
+
+showColor();
+
+</script>
+
+</body>
+</html>
